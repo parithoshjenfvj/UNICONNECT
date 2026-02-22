@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import "../styles/Auth.css";
-
+import { useNavigate } from "react-router-dom";
 const Login = ({ onSwitchToRegister }) => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -9,24 +10,28 @@ const Login = ({ onSwitchToRegister }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     // API connection will be added later
-    try{
-        const response=await fetch("http://localhost:3000/api/auth/user/login",{
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            credentials: "include", // VERY IMPORTANT (for cookies)
-            body: JSON.stringify({ email, password })
-        });
-        const data=await response.json();
-        if (response.ok) {
+    try {
+      const response = await fetch(
+        "http://localhost:3000/api/auth/user/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          credentials: "include", // VERY IMPORTANT (for cookies)
+          body: JSON.stringify({ email, password }),
+        },
+      );
+      const data = await response.json();
+      if (response.ok) {
         console.log("Login success:", data);
+        navigate("/dashboard");
         alert("Login Successful 🚀");
-        }else{
-           alert(data.message); 
-        }
-    }catch(err){
-        console.error("Login error:", err);
+      } else {
+        alert(data.message);
+      }
+    } catch (err) {
+      console.error("Login error:", err);
     }
   };
 
@@ -75,8 +80,6 @@ const Login = ({ onSwitchToRegister }) => {
                 </button>
               </div>
             </div>
-
-            
 
             <button type="submit" className="submit-btn">
               Sign In

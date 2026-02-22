@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import "../styles/Auth.css";
-
+import { useNavigate } from "react-router-dom";
 const Register = ({ onSwitchToLogin }) => {
+  const navigate=useNavigate();
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -37,6 +38,7 @@ const Register = ({ onSwitchToLogin }) => {
         const data=await response.json();
         if(response.ok){
             alert("Registration Successful");
+            navigate("/dashboard")
         }else{
             alert(data.message);
         }
