@@ -3,6 +3,7 @@ const express=require("express");
 const cookieParser=require("cookie-parser");
 const app=express();
 const userAuthRoutes=require("./routes/userAuth.routes");
+const postRoutes=require("./routes/post.routes");
 const dashboardRoutes=require("./routes/dashboard.routes");
 const cors = require("cors");
 
@@ -14,4 +15,5 @@ app.use(cookieParser());
 app.use(express.json());
 app.use("/api/auth",userAuthRoutes)
 app.use("/user",dashboardRoutes)
+app.use("/user/post",postRoutes)
 module.exports=app;
