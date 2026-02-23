@@ -52,10 +52,30 @@ const Dashboard = () => {
     navigate("/post");
   };
 
+  const handleLogout=async ()=>{
+    try{
+      await fetch("http://localhost:3000/user/logout",{
+        method:"POST",
+        credentials:"include"
+      })
+      navigate("/");
+    }catch(error){
+      console.log("Logout failed", error);
+    }
+  }
+
   return (
     <div className="dashboard-container">
-      <h2>Dashboard</h2>
-      {user ? <h3>Welcome {user.fullName}</h3> : <p>Loading...</p>}
+      <div className="dashboard-header">
+        <div>
+          <h2>Dashboard</h2>
+          {user ? <h3>Welcome {user.fullName}</h3> : <p>Loading...</p>}
+        </div>
+
+        <button className="logout-btn" onClick={handleLogout}>
+          Logout
+        </button>
+      </div>
 
       {/* Floating Plus Button with Menu */}
       <div className="floating-menu-container">
