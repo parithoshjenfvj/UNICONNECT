@@ -12,6 +12,22 @@ async function createPost(req,res){
         postItem
     })
 }
+
+async function getPosts(req,res){
+    try{
+        const userId = req.user._id;
+        let posts=await postModel.find({userId:userId})
+        res.status(200).json({
+            posts
+        })
+    }catch(error){
+        res.status(500).json({
+            message:"Failed to fetch posts",
+            error:error.message
+        })
+    }
+}
 module.exports={
-    createPost
+    createPost,
+    getPosts
 }

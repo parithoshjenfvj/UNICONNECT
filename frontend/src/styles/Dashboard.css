@@ -1,0 +1,320 @@
+.dashboard-container {
+    padding: 24px;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
+}
+
+.dashboard-container h2 {
+    margin: 0 0 20px 0;
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.dashboard-container h3 {
+    margin: 10px 0 0 0;
+    font-size: 20px;
+    font-weight: 400;
+    opacity: 0.95;
+}
+
+.dashboard-container p {
+    font-size: 16px;
+}
+
+/* Floating Plus Button */
+.floating-plus-btn {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 36px;
+    font-weight: 300;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 24px rgba(102, 126, 234, 0.4);
+    transition: all 0.3s ease;
+    z-index: 100;
+}
+
+.floating-plus-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 12px 32px rgba(102, 126, 234, 0.6);
+}
+
+.floating-plus-btn:active {
+    transform: scale(0.95);
+}
+
+/* Floating Menu Container */
+.floating-menu-container {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    z-index: 100;
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+    position: absolute;
+    bottom: 70px;
+    right: 0;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    min-width: 200px;
+    animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.menu-item {
+    display: block;
+    width: 100%;
+    padding: 14px 16px;
+    background: white;
+    border: none;
+    text-align: left;
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.menu-item:last-child {
+    border-bottom: none;
+}
+
+.menu-item:hover:not(:disabled) {
+    background: #f5f5f5;
+    color: #667eea;
+}
+
+.menu-item:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Posts Modal Overlay */
+.posts-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Posts Modal */
+.posts-modal {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 600px;
+    max-height: 80vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal-header {
+    padding: 20px;
+    border-bottom: 1px solid #f0f0f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h2 {
+    margin: 0;
+    font-size: 24px;
+    color: #333;
+}
+
+.close-modal-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #999;
+    cursor: pointer;
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+}
+
+.close-modal-btn:hover {
+    background: #f5f5f5;
+    color: #333;
+}
+
+/* Posts List */
+.posts-list {
+    overflow-y: auto;
+    flex: 1;
+    padding: 16px;
+}
+
+.posts-list::-webkit-scrollbar {
+    width: 8px;
+}
+
+.posts-list::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.posts-list::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+.posts-list::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Post Item */
+.post-item {
+    background: #f9f9f9;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 16px;
+    border: 1px solid #e8e8e8;
+    transition: all 0.2s ease;
+}
+
+.post-item:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.post-image {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    display: block;
+}
+
+.post-content {
+    padding: 12px;
+}
+
+.post-description {
+    margin: 0 0 8px 0;
+    color: #333;
+    font-size: 14px;
+    line-height: 1.5;
+    word-wrap: break-word;
+}
+
+.post-date {
+    font-size: 12px;
+    color: #999;
+}
+
+/* No Posts Message */
+.no-posts {
+    text-align: center;
+    padding: 40px 20px;
+    color: #999;
+    font-size: 16px;
+}
+
+@media (max-width: 768px) {
+    .floating-plus-btn {
+        bottom: 24px;
+        right: 24px;
+        width: 56px;
+        height: 56px;
+        font-size: 32px;
+    }
+
+    .floating-menu-container {
+        bottom: 24px;
+        right: 24px;
+    }
+
+    .dropdown-menu {
+        min-width: 180px;
+        bottom: 64px;
+    }
+
+    .menu-item {
+        padding: 12px 14px;
+        font-size: 13px;
+    }
+
+    .posts-modal {
+        width: 95%;
+        max-height: 70vh;
+    }
+
+    .modal-header h2 {
+        font-size: 20px;
+    }
+
+    .post-image {
+        height: 240px;
+    }
+
+    .dashboard-container {
+        padding: 16px;
+    }
+
+    .dashboard-container h2 {
+        font-size: 24px;
+    }
+
+    .dashboard-container h3 {
+        font-size: 16px;
+    }
+}
